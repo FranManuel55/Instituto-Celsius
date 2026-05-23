@@ -1,0 +1,287 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const avatars = [
+  { letter: 'M', gradient: 'from-brand to-brand-deep' },
+  { letter: 'D', gradient: 'from-warm to-warm-deep' },
+  { letter: 'L', gradient: 'from-emerald-500 to-emerald-700' },
+  { letter: 'C', gradient: 'from-amber-500 to-amber-700' },
+  { letter: 'A', gradient: 'from-rose-500 to-rose-700' },
+];
+---
+
+<section id="nosotros" class="section-padding bg-surface-raised border-t border-hairline">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-end mb-14">
+      <div class="reveal">
+        <div class="section-eyebrow">
+          <span class="eyebrow-number">01 / Propuesta</span>
+          <span class="section-eyebrow-line"></span>
+        </div>
+        <h2 class="display-2 text-balance">
+          Una escuela pensada para
+          <span class="display-italic text-gradient-warm">profesionales reales.</span>
+        </h2>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="lead text-pretty max-w-xl">
+          No vendemos diplomas. Construimos perfiles laborales completos, con foco en la práctica,
+          la empleabilidad inmediata y el seguimiento docente que distingue a Celsius hace 18 años.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-6 gap-4">
+      <!-- 01 · TRAYECTORIA (hero) -->
+      <article class="col-span-6 lg:col-span-4 group relative overflow-hidden rounded-3xl border border-hairline bg-surface-raised p-7 lg:p-10 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:shadow-raised reveal">
+        <div class="absolute inset-0 opacity-[0.04] bg-dot-grid bg-[length:18px_18px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(79,76,201,0.10),transparent_70%)] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <div class="relative grid md:grid-cols-[1.3fr_1fr] gap-10 h-full items-end min-h-[280px]">
+          <div>
+            <div class="flex items-center gap-3 mb-7">
+              <div class="w-11 h-11 rounded-xl bg-brand-tint border border-brand/15 flex items-center justify-center transition-all duration-500 group-hover:bg-brand group-hover:border-brand group-hover:-rotate-3">
+                <Icon name="lucide:graduation-cap" class="w-5 h-5 text-brand-deep transition-colors duration-500 group-hover:text-white" />
+              </div>
+              <span class="font-mono text-[0.7rem] uppercase tracking-widest text-ink-subtle">
+                01 · Trayectoria
+              </span>
+            </div>
+
+            <h3 class="font-display text-[1.75rem] lg:text-[2.15rem] leading-[1.05] text-ink mb-4 tracking-tight text-balance">
+              <span class="display-italic text-warm-deep">18 años</span> perfeccionando programas con quienes mejor saben.
+            </h3>
+            <p class="text-ink-muted leading-relaxed max-w-md">
+              Casi dos décadas iterando cursos junto a especialistas activos del sector. Lo que enseñamos hoy es lo que el mercado pide ahora — no hace cinco años.
+            </p>
+          </div>
+
+          <div class="relative pl-0 md:pl-6 md:border-l border-hairline">
+            <p class="text-eyebrow uppercase text-ink-subtle mb-4">Línea de tiempo</p>
+            <div class="space-y-3">
+              <div class="flex items-baseline gap-3">
+                <span class="font-display text-[2.25rem] leading-none text-ink tracking-tight">2006</span>
+                <span class="font-mono text-[0.65rem] text-ink-subtle uppercase tracking-wider">fundación</span>
+              </div>
+              <div class="flex items-center gap-3 pl-1">
+                <div class="w-px h-6 bg-gradient-to-b from-hairline to-warm/40"></div>
+                <span class="font-mono text-[0.65rem] text-ink-muted uppercase tracking-wider">+ 18 años</span>
+              </div>
+              <div class="flex items-baseline gap-3">
+                <span class="font-display text-[2.25rem] leading-none text-warm-deep tracking-tight">2024</span>
+                <span class="font-mono text-[0.65rem] text-warm-deep uppercase tracking-wider">+100K egresados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 · CERTIFICADOS (tall) -->
+      <article class="col-span-6 lg:col-span-2 group relative overflow-hidden rounded-3xl border border-hairline bg-surface-raised p-7 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:shadow-raised reveal reveal-delay-1">
+        <div class="relative aspect-[5/4] -mx-2 -mt-2 mb-6 rounded-2xl bg-gradient-to-br from-ink to-brand-ink p-5 overflow-hidden transition-transform duration-700 group-hover:-rotate-1 group-hover:scale-[1.02]">
+          <div class="absolute inset-0 opacity-[0.06] bg-dot-grid bg-[length:10px_10px]"></div>
+          <div class="relative flex flex-col justify-between h-full text-surface">
+            <div class="flex items-center justify-between">
+              <span class="text-[0.55rem] tracking-widest uppercase text-warm-light flex items-center gap-1.5">
+                <span class="w-1 h-1 rounded-full bg-warm"></span>
+                Certificado
+              </span>
+              <span class="font-mono text-[0.55rem] text-surface/40">N° 0247</span>
+            </div>
+            <div>
+              <p class="font-display italic text-warm-light text-base leading-tight">Diploma en</p>
+              <p class="font-display text-surface text-xl leading-tight tracking-tight">Electricidad</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[0.55rem] text-surface/50 uppercase tracking-wider">Aval nacional</span>
+              <div class="w-6 h-6 rounded-full border border-warm/40 flex items-center justify-center">
+                <Icon name="lucide:check" class="w-2.5 h-2.5 text-warm" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-3">
+          <Icon name="lucide:badge-check" class="w-4 h-4 text-brand-deep" />
+          <span class="font-mono text-[0.7rem] uppercase tracking-widest text-ink-subtle">02</span>
+        </div>
+        <h3 class="font-display text-[1.25rem] text-ink leading-tight mb-2 tracking-tight">
+          Certificados con validez nacional
+        </h3>
+        <p class="text-sm text-ink-muted leading-relaxed">
+          Reconocidos por empleadores en todo el país.
+        </p>
+      </article>
+
+      <!-- 03 · AULAS VIRTUALES (dark contrast) -->
+      <article class="col-span-6 sm:col-span-3 lg:col-span-2 group relative overflow-hidden rounded-3xl border border-ink/10 bg-ink text-surface p-7 transition-all duration-500 ease-out-expo hover:border-ink/30 hover:shadow-float reveal reveal-delay-2">
+        <div class="absolute inset-0 opacity-[0.05] bg-dot-grid bg-[length:14px_14px]"></div>
+        <div class="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-gradient-to-br from-brand/40 via-warm/15 to-transparent blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <div class="relative flex flex-col h-full">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+              <Icon name="lucide:laptop" class="w-4 h-4 text-warm-light" />
+            </div>
+            <span class="font-mono text-[0.7rem] uppercase tracking-widest text-surface/40">03</span>
+          </div>
+
+          <h3 class="font-display text-[1.25rem] text-surface leading-tight mb-2 tracking-tight">
+            Aulas virtuales propias
+          </h3>
+          <p class="text-sm text-surface/60 leading-relaxed mb-6 flex-1">
+            Plataforma diseñada para aprender a tu ritmo, sin perder el seguimiento.
+          </p>
+
+          <div class="rounded-xl bg-white/5 border border-white/10 p-3 space-y-2 backdrop-blur-sm">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]"></div>
+              <div class="h-1.5 bg-white/15 rounded-full flex-1 overflow-hidden">
+                <div class="h-full w-3/5 bg-gradient-to-r from-brand to-warm rounded-full"></div>
+              </div>
+              <span class="font-mono text-[0.6rem] text-surface/50">60%</span>
+            </div>
+            <div class="h-1.5 bg-white/10 rounded-full w-4/5"></div>
+            <div class="h-1.5 bg-white/10 rounded-full w-2/3"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 · RED DE EGRESADOS -->
+      <article class="col-span-6 sm:col-span-3 lg:col-span-2 group relative overflow-hidden rounded-3xl border border-hairline bg-surface-raised p-7 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:shadow-raised reveal reveal-delay-3">
+        <div class="flex flex-col h-full">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-brand-tint border border-brand/15 flex items-center justify-center transition-transform duration-500 group-hover:-rotate-3">
+              <Icon name="lucide:users-round" class="w-4 h-4 text-brand-deep" />
+            </div>
+            <span class="font-mono text-[0.7rem] uppercase tracking-widest text-ink-subtle">04</span>
+          </div>
+
+          <h3 class="font-display text-[1.25rem] text-ink leading-tight mb-2 tracking-tight">
+            Red de egresados activa
+          </h3>
+          <p class="text-sm text-ink-muted leading-relaxed mb-6 flex-1">
+            Formás parte de una comunidad de profesionales en actividad.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex -space-x-2.5">
+              {avatars.map((a) => (
+                <div class={`w-9 h-9 rounded-full bg-gradient-to-br ${a.gradient} border-2 border-surface-raised flex items-center justify-center text-white text-xs font-medium`}>
+                  {a.letter}
+                </div>
+              ))}
+              <div class="w-9 h-9 rounded-full border-2 border-surface-raised bg-ink flex items-center justify-center text-surface text-[0.6rem] font-medium font-mono">
+                +99K
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 · SEDE MENDOZA -->
+      <article class="col-span-6 sm:col-span-6 lg:col-span-2 group relative overflow-hidden rounded-3xl border border-hairline bg-surface-raised p-7 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:shadow-raised reveal reveal-delay-4">
+        <div class="flex flex-col h-full">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-warm-tint border border-warm/20 flex items-center justify-center transition-transform duration-500 group-hover:-rotate-3">
+              <Icon name="lucide:map-pin" class="w-4 h-4 text-warm-deep" />
+            </div>
+            <span class="font-mono text-[0.7rem] uppercase tracking-widest text-ink-subtle">05</span>
+          </div>
+
+          <h3 class="font-display text-[1.25rem] text-ink leading-tight mb-2 tracking-tight">
+            Sede física en Mendoza
+          </h3>
+          <p class="text-sm text-ink-muted leading-relaxed mb-6 flex-1">
+            Aulas equipadas para la modalidad presencial.
+          </p>
+
+          <div class="rounded-xl bg-surface-sunken/60 border border-hairline p-3 flex items-center gap-3">
+            <div class="relative w-10 h-10 rounded-lg bg-ink flex items-center justify-center shrink-0">
+              <Icon name="lucide:map-pin" class="w-4 h-4 text-warm" />
+              <span class="absolute -inset-1 rounded-xl border border-warm/30 opacity-0 group-hover:opacity-100 group-hover:animate-pulse-ring"></span>
+            </div>
+            <div class="text-sm leading-tight min-w-0">
+              <p class="font-medium text-ink truncate">Montecaseros 1169</p>
+              <p class="text-xs text-ink-muted mt-0.5">Mendoza · Argentina</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 · TUTORÍA HUMANA (full-width warm banner) -->
+      <article class="col-span-6 group relative overflow-hidden rounded-3xl border border-warm/15 bg-warm-tint p-7 lg:p-10 transition-all duration-500 ease-out-expo hover:border-warm/30 hover:shadow-raised reveal reveal-delay-5">
+        <div class="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-[radial-gradient(circle,rgba(217,119,87,0.18),transparent_60%)] pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[radial-gradient(circle,rgba(79,76,201,0.10),transparent_60%)] pointer-events-none"></div>
+
+        <div class="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-14 items-center">
+          <div>
+            <div class="flex items-center gap-2 mb-5">
+              <div class="w-9 h-9 rounded-xl bg-warm/20 border border-warm/30 flex items-center justify-center">
+                <Icon name="lucide:life-buoy" class="w-4 h-4 text-warm-deep" />
+              </div>
+              <span class="font-mono text-[0.7rem] uppercase tracking-widest text-warm-deep/70">
+                06 · Acompañamiento
+              </span>
+            </div>
+
+            <h3 class="font-display text-[1.85rem] lg:text-[2.25rem] leading-[1.05] text-ink tracking-tight mb-5 text-balance">
+              <span class="display-italic text-warm-deep">Tutoría humana</span>
+              durante toda tu cursada.
+            </h3>
+            <p class="text-ink-muted leading-relaxed max-w-lg">
+              Profesores reales, no chatbots. Respondemos por WhatsApp y videollamada, de lunes a sábado.
+              Acompañamiento personal hasta el último examen.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-7 pt-7 border-t border-warm/15">
+              <div class="flex items-center gap-2 text-sm">
+                <Icon name="lucide:clock" class="w-4 h-4 text-warm-deep" />
+                <span class="text-ink"><strong class="font-medium">Lun a Sáb</strong> · 9 a 19 hs</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <Icon name="lucide:message-circle" class="w-4 h-4 text-warm-deep" />
+                <span class="text-ink">Respuesta en <strong class="font-medium">&lt; 1 hora</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute inset-0 -m-4 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.5),transparent_70%)] pointer-events-none"></div>
+            <div class="relative rounded-2xl bg-surface-raised border border-warm/20 p-5 shadow-raised max-w-sm lg:ml-auto transition-transform duration-700 group-hover:-translate-y-1 group-hover:rotate-[0.5deg]">
+              <div class="flex items-center gap-3 pb-3 border-b border-hairline">
+                <div class="relative shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-deep flex items-center justify-center text-white text-sm font-medium">
+                    M
+                  </div>
+                  <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-surface-raised"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-ink leading-tight">Prof. Mariana</p>
+                  <p class="text-[0.7rem] text-emerald-600 mt-0.5">en línea ahora</p>
+                </div>
+                <Icon name="lucide:message-circle" class="w-4 h-4 text-ink-subtle" />
+              </div>
+              <div class="space-y-3 pt-4">
+                <div>
+                  <div class="rounded-2xl rounded-tl-sm bg-surface-sunken px-3.5 py-2.5 max-w-[88%]">
+                    <p class="text-[0.85rem] text-ink leading-snug">
+                      ¡Hola! Vi que arrancaste el módulo 3. Si tenés dudas con los circuitos, mandame un mensaje 👋
+                    </p>
+                  </div>
+                  <p class="text-[0.65rem] text-ink-subtle pl-3 mt-1">9:42</p>
+                </div>
+                <div class="flex items-center gap-1 pl-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-ink-faint animate-pulse"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-ink-faint animate-pulse [animation-delay:200ms]"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-ink-faint animate-pulse [animation-delay:400ms]"></span>
+                  <span class="text-[0.65rem] text-ink-subtle ml-2">escribiendo…</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

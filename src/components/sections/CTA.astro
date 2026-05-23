@@ -1,0 +1,65 @@
+---
+import { getWhatsAppLinkWithContext } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="relative overflow-hidden bg-ink text-surface">
+  <div class="absolute inset-0 opacity-[0.04] bg-dot-grid bg-[length:22px_22px]"></div>
+  <div class="absolute -top-32 -right-32 w-[36rem] h-[36rem] rounded-full bg-gradient-to-br from-brand/30 via-warm/15 to-transparent blur-3xl"></div>
+  <div class="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-gradient-to-br from-warm/20 to-transparent blur-3xl"></div>
+
+  <div class="container-custom relative py-24 md:py-32 lg:py-40">
+    <div class="max-w-4xl reveal">
+      <div class="section-eyebrow !mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-warm"></span>
+        <span class="text-eyebrow uppercase text-surface/70">Tu próximo paso</span>
+        <span class="flex-1 h-px bg-white/10"></span>
+      </div>
+
+      <h2 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1] tracking-[-0.035em] text-balance">
+        Empezá hoy lo que el
+        <span class="display-italic text-warm-light">año que viene</span>
+        te va a haber cambiado la vida.
+      </h2>
+
+      <p class="lead text-surface/70 mt-8 max-w-2xl text-pretty">
+        Más de 100.000 personas confiaron en Celsius para dar el salto profesional.
+        Sumate a la próxima camada — la inscripción dura cinco minutos.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-10">
+        <a
+          href={getWhatsAppLinkWithContext('Hola! Quiero inscribirme en un curso. ¿Me pueden informar sobre cursos disponibles y requisitos de inscripción?')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-lg bg-surface text-ink hover:bg-surface-sunken hover:-translate-y-px shadow-raised group"
+        >
+          <Icon name="lucide:message-circle" class="w-4 h-4" />
+          Reservá tu lugar
+          <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+        <a
+          href="#cursos"
+          class="btn btn-lg bg-transparent text-surface border border-white/20 hover:bg-white/5 hover:border-white/40 group"
+        >
+          Ver cursos disponibles
+          <Icon name="lucide:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
+
+      <div class="mt-14 pt-10 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
+        {[
+          { label: 'Atención', value: 'Lun a Sáb' },
+          { label: 'Respuesta', value: '< 1 hora' },
+          { label: 'Modalidad', value: 'Online / presencial' },
+          { label: 'Certificado', value: 'Validez nacional' },
+        ].map((item) => (
+          <div>
+            <p class="text-eyebrow uppercase text-surface/40 mb-2">{item.label}</p>
+            <p class="font-display text-lg text-surface tracking-tight">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

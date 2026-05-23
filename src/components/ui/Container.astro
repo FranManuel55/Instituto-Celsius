@@ -1,0 +1,12 @@
+---
+interface Props {
+  variant?: 'default' | 'alt';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+---
+
+<div class={`container-custom ${variant === 'alt' ? 'bg-gray-50' : ''} ${className}`}>
+  <slot />
+</div>

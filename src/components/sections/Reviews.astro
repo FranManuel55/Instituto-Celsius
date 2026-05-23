@@ -1,0 +1,154 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+
+const reviews = [
+  {
+    name: 'María González',
+    initial: 'M',
+    rating: 5,
+    date: 'Hace 2 semanas',
+    course: 'Electricidad general',
+    text: 'Excelente institución. Hice el curso de electricidad y hoy trabajo de lo mío. Los profes muy capacitados y la modalidad online es muy práctica.',
+  },
+  {
+    name: 'Diego Martínez',
+    initial: 'D',
+    rating: 5,
+    date: 'Hace 1 mes',
+    course: 'Marketing digital',
+    text: 'Muy conforme con el curso. Contenido actualizado y material de estudio muy completo. Totalmente recomendado.',
+  },
+  {
+    name: 'Laura Rodríguez',
+    initial: 'L',
+    rating: 5,
+    date: 'Hace 3 semanas',
+    course: 'Administración',
+    text: 'La modalidad 100% online me permitió estudiar sin perder tiempo en traslados. El certificado tiene mucho valor en el mercado laboral.',
+  },
+  {
+    name: 'Carlos Pérez',
+    initial: 'C',
+    rating: 4,
+    date: 'Hace 1 semana',
+    course: 'Plomería',
+    text: 'Buen curso. La parte práctica podría ser un poco más extensa, pero en general muy bueno. Volvería a elegir Celsius sin dudarlo.',
+  },
+  {
+    name: 'Ana María Sánchez',
+    initial: 'A',
+    rating: 5,
+    date: 'Hace 1 mes',
+    course: 'RRHH',
+    text: 'Instituto de confianza. Mis tres hijos cursaron acá y hoy tienen trabajos estables. El personal siempre está dispuesto a ayudar.',
+  },
+  {
+    name: 'Miguel Torres',
+    initial: 'M',
+    rating: 5,
+    date: 'Hace 2 meses',
+    course: 'Refrigeración',
+    text: 'En dos meses ya tenía clientes propios. La inversión vale totalmente la pena. Volvería a elegir Celsius sin dudarlo.',
+  },
+];
+
+const avatarGradients = [
+  'from-brand to-brand-deep',
+  'from-warm to-warm-deep',
+  'from-emerald-500 to-emerald-700',
+  'from-amber-500 to-amber-700',
+  'from-rose-500 to-rose-700',
+  'from-sky-500 to-sky-700',
+];
+---
+
+<section id="resenas" class="section-padding bg-surface relative overflow-hidden">
+  <div class="absolute inset-0 surface-grain pointer-events-none"></div>
+
+  <div class="container-custom relative">
+    <div class="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-end mb-16">
+      <div class="reveal">
+        <div class="section-eyebrow">
+          <span class="eyebrow-number">04 / Reseñas</span>
+          <span class="section-eyebrow-line"></span>
+        </div>
+        <h2 class="display-2 text-balance">
+          La voz de quienes ya
+          <span class="display-italic text-gradient-warm">eligieron</span>
+          Celsius.
+        </h2>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="bg-surface-raised border border-hairline rounded-3xl p-6 lg:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div class="flex items-center gap-5">
+            <div class="relative">
+              <div class="w-16 h-16 rounded-2xl bg-ink text-surface flex items-center justify-center">
+                <span class="font-display text-[1.8rem] leading-none">{siteConfig.rating.average}</span>
+              </div>
+              <div class="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full bg-warm flex items-center justify-center shadow-soft">
+                <Icon name="lucide:star" class="w-3.5 h-3.5 text-white fill-white" />
+              </div>
+            </div>
+            <div>
+              <div class="flex gap-0.5 mb-1">
+                {Array(5).fill(0).map((_, i) => (
+                  <Icon name="lucide:star" class={`w-3.5 h-3.5 ${i < Math.round(siteConfig.rating.average) ? 'text-warm fill-warm' : 'text-ink-faint'}`} />
+                ))}
+              </div>
+              <p class="font-display text-lg leading-tight text-ink tracking-tight">Calificación general</p>
+              <p class="text-sm text-ink-muted">Basado en {siteConfig.rating.count} reseñas reales</p>
+            </div>
+          </div>
+          <a
+            href="https://www.google.com/maps/place/Instituto+Celsius"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-brand transition-colors group/link shrink-0"
+          >
+            Ver todas
+            <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+      {reviews.map((review, i) => (
+        <article class={`group relative bg-surface-raised border border-hairline rounded-3xl p-7 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:shadow-raised hover:-translate-y-1 reveal reveal-delay-${(i % 3) + 1} flex flex-col`}>
+          <Icon name="lucide:quote" class="absolute top-6 right-6 w-7 h-7 text-hairline-strong" />
+
+          <div class="flex items-center gap-3 mb-4">
+            <div class={`w-11 h-11 rounded-full bg-gradient-to-br ${avatarGradients[i % avatarGradients.length]} flex items-center justify-center text-white font-medium`}>
+              {review.initial}
+            </div>
+            <div>
+              <h4 class="font-medium text-ink leading-tight">{review.name}</h4>
+              <p class="text-xs text-ink-subtle mt-0.5">{review.date}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-0.5 mb-3">
+            {Array(5).fill(0).map((_, idx) => (
+              <Icon name="lucide:star" class={`w-3.5 h-3.5 ${idx < review.rating ? 'text-warm fill-warm' : 'text-ink-faint'}`} />
+            ))}
+          </div>
+
+          <p class="text-ink-muted leading-relaxed text-[0.93rem] flex-1">
+            &ldquo;{review.text}&rdquo;
+          </p>
+
+          <div class="mt-5 pt-4 border-t border-hairline-subtle flex items-center justify-between">
+            <span class="badge-neutral text-[0.7rem] !px-2 !py-1">
+              {review.course}
+            </span>
+            <div class="flex items-center gap-1.5 text-[0.7rem] text-ink-subtle">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#4285F4] flex items-center justify-center text-[8px] font-bold text-white">G</span>
+              Google
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,153 @@
+---
+import { getWhatsAppLinkWithContext } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden surface-grain">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_85%_0%,rgba(79,76,201,0.08),transparent_45%),radial-gradient(circle_at_0%_100%,rgba(217,119,87,0.06),transparent_45%)] pointer-events-none"></div>
+
+  <div class="absolute inset-x-0 top-24 mx-auto h-[1px] max-w-container px-5 sm:px-8 lg:px-10 pointer-events-none opacity-60">
+    <div class="h-px bg-gradient-to-r from-transparent via-hairline to-transparent"></div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <div class="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-20 items-center">
+      <div class="text-left">
+        <div class="reveal">
+          <span class="badge-live mb-7">
+            Inscripciones abiertas · ciclo 2026
+          </span>
+        </div>
+
+        <h1 class="display-1 text-balance reveal reveal-delay-1">
+          Aprendé un oficio.
+          <br class="hidden sm:block" />
+          <span class="display-italic text-gradient-warm">Construí</span>
+          tu próximo
+          <span class="relative inline-block">
+            capítulo
+            <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 9 C 50 2, 150 2, 198 9" stroke="#D97757" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+            </svg>
+          </span>.
+        </h1>
+
+        <p class="lead mt-8 max-w-xl text-pretty reveal reveal-delay-2">
+          Formación práctica en oficios y gestión, con certificaciones válidas a nivel nacional.
+          Más de <strong class="text-ink font-medium">100.000 egresados</strong> nos respaldan desde 2006.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 mt-10 reveal reveal-delay-3">
+          <a
+            href={getWhatsAppLinkWithContext('Hola! Vi su web y me interesa conocer los cursos disponibles.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-md btn-lg bg-ink text-surface shadow-soft hover:shadow-raised hover:-translate-y-px hover:bg-ink-strong active:translate-y-0 group"
+          >
+            Hablemos por WhatsApp
+            <Icon name="lucide:arrow-up-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <a href="#cursos" class="btn btn-lg bg-transparent text-ink border border-hairline-strong hover:bg-surface-sunken hover:border-ink/20 group">
+            Explorá los cursos
+            <Icon name="lucide:arrow-down" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+          </a>
+        </div>
+
+        <div class="mt-14 pt-10 border-t border-hairline reveal reveal-delay-4">
+          <p class="text-eyebrow uppercase text-ink-subtle mb-5">Confían en nosotros</p>
+          <div class="grid grid-cols-3 gap-6 max-w-lg">
+            <div>
+              <div class="font-display text-[2.25rem] leading-none text-ink tracking-tight">18</div>
+              <div class="text-sm text-ink-muted mt-1.5">años de trayectoria</div>
+            </div>
+            <div class="border-l border-hairline pl-6">
+              <div class="font-display text-[2.25rem] leading-none text-ink tracking-tight">100<span class="text-warm">K</span></div>
+              <div class="text-sm text-ink-muted mt-1.5">egresados activos</div>
+            </div>
+            <div class="border-l border-hairline pl-6">
+              <div class="font-display text-[2.25rem] leading-none text-ink tracking-tight flex items-baseline gap-1">
+                4.8<Icon name="lucide:star" class="w-4 h-4 text-warm fill-warm self-center mb-0.5" />
+              </div>
+              <div class="text-sm text-ink-muted mt-1.5">en Google Maps</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative reveal reveal-delay-2">
+        <div class="absolute -inset-8 bg-[radial-gradient(circle_at_50%_50%,rgba(79,76,201,0.12),transparent_60%)] pointer-events-none"></div>
+
+        <div class="relative aspect-[4/5] max-w-md mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-br from-ink to-brand-ink rounded-[2rem] overflow-hidden shadow-float">
+            <div class="absolute inset-0 opacity-[0.04] bg-dot-grid bg-[length:18px_18px]"></div>
+
+            <div class="absolute top-8 left-8 right-8 flex items-center justify-between text-surface/80">
+              <div class="flex items-center gap-2 text-xs tracking-wider uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-warm"></span>
+                Certificación oficial
+              </div>
+              <span class="font-mono text-[0.65rem] opacity-60">N° 2026 / 0247</span>
+            </div>
+
+            <div class="absolute inset-x-8 top-1/2 -translate-y-1/2">
+              <p class="text-warm/80 text-eyebrow uppercase mb-3">Instituto Celsius</p>
+              <h3 class="font-display text-surface text-[2rem] leading-[1.05] tracking-tight">
+                Diploma en<br/>
+                <span class="display-italic text-warm">Electricidad</span><br/>
+                profesional
+              </h3>
+              <div class="mt-8 pt-6 border-t border-white/10 flex items-end justify-between">
+                <div>
+                  <p class="text-[0.65rem] tracking-wider uppercase text-surface/50">Egresado</p>
+                  <p class="font-display text-surface text-lg mt-1">M. Rodríguez</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-[0.65rem] tracking-wider uppercase text-surface/50">Año</p>
+                  <p class="font-mono text-surface text-sm mt-1">2025</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-7 left-8 right-8 flex items-center justify-between">
+              <span class="font-display italic text-surface/70 text-sm">Validez nacional</span>
+              <div class="w-10 h-10 rounded-full border border-warm/40 flex items-center justify-center">
+                <Icon name="lucide:check" class="w-4 h-4 text-warm" />
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -top-5 -left-8 bg-surface-raised border border-hairline rounded-2xl p-4 pr-5 shadow-raised flex items-center gap-3 max-w-[230px] backdrop-blur-sm">
+            <div class="flex -space-x-2 shrink-0">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-warm to-warm-deep border-2 border-surface-raised flex items-center justify-center text-white text-xs font-medium">M</div>
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-brand-deep border-2 border-surface-raised flex items-center justify-center text-white text-xs font-medium">L</div>
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 border-2 border-surface-raised flex items-center justify-center text-white text-xs font-medium">D</div>
+            </div>
+            <div class="leading-tight">
+              <p class="text-[0.78rem] text-ink-muted">+500 nuevos</p>
+              <p class="text-[0.85rem] font-medium text-ink">estudiantes/mes</p>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-6 -right-6 bg-surface-raised border border-hairline rounded-2xl p-4 shadow-raised max-w-[210px]">
+            <div class="flex items-center gap-2.5 mb-2">
+              <div class="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                <Icon name="lucide:laptop" class="w-4 h-4 text-emerald-600" />
+              </div>
+              <span class="text-eyebrow uppercase text-emerald-700">100% online</span>
+            </div>
+            <p class="text-[0.85rem] text-ink leading-snug">Estudiá desde donde estés, a tu propio ritmo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    href="#nosotros"
+    class="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-2 text-xs uppercase tracking-[0.18em] text-ink-subtle hover:text-ink transition-colors group"
+    aria-label="Desplazar hacia abajo"
+  >
+    <span>Descubrí más</span>
+    <span class="w-8 h-px bg-current group-hover:w-12 transition-all duration-500"></span>
+  </a>
+</section>

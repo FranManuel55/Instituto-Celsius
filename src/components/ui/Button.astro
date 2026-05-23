@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: 'primary' | 'brand' | 'whatsapp' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  target,
+  rel,
+  class: className = '',
+  type = 'button',
+  disabled = false,
+  ariaLabel,
+} = Astro.props;
+
+const baseClasses = 'btn';
+
+const variantClasses = {
+  primary: 'bg-ink text-surface shadow-soft hover:shadow-raised hover:-translate-y-px hover:bg-ink-strong active:translate-y-0',
+  brand: 'bg-brand text-white shadow-brand-glow hover:bg-brand-deep hover:-translate-y-px active:translate-y-0',
+  whatsapp: 'bg-whatsapp text-white shadow-[0_8px_24px_-8px_rgba(37,211,102,0.5)] hover:bg-whatsapp-deep hover:-translate-y-px active:translate-y-0',
+  ghost: 'bg-transparent text-ink border border-hairline-strong hover:bg-surface-sunken hover:border-ink/20',
+};
+
+const sizeClasses = {
+  sm: 'btn-sm',
+  md: 'btn-md',
+  lg: 'btn-lg',
+};
+
+const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+---
+
+{href ? (
+  <a href={href} target={target} rel={rel} class={classes} aria-label={ariaLabel}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} disabled={disabled} aria-label={ariaLabel}>
+    <slot />
+  </button>
+)}

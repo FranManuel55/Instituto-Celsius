@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="section-padding bg-surface relative overflow-hidden">
+  <div class="absolute inset-0 surface-grain pointer-events-none"></div>
+
+  <div class="container-custom relative">
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
+      <div class="reveal">
+        <div class="section-eyebrow">
+          <span class="eyebrow-number">02 / Nosotros</span>
+          <span class="section-eyebrow-line"></span>
+        </div>
+
+        <h2 class="display-2 text-balance mb-8">
+          Una historia de
+          <span class="display-italic text-gradient-warm">100.000 oficios</span>
+          aprendidos.
+        </h2>
+
+        <div class="space-y-5 text-ink-muted leading-relaxed max-w-prose">
+          <p class="text-[1.05rem]">
+            Instituto Celsius nació en 2006 con una misión clara: <strong class="text-ink font-medium">democratizar el acceso a la formación profesional</strong> en Mendoza y, después, en toda Argentina a través de nuestras aulas virtuales.
+          </p>
+          <p>
+            Combinamos teoría rigurosa y práctica intensiva. Nuestros programas se diseñan junto a referentes activos de cada industria, para que lo que aprendés esté al día con lo que se pide hoy en el mercado.
+          </p>
+          <p>
+            Modalidad presencial en nuestra sede, o cursada 100% online con tutores reales. Vos elegís el ritmo; nosotros sostenemos el rigor.
+          </p>
+        </div>
+
+        <ul class="grid sm:grid-cols-2 gap-3 mt-10 max-w-lg">
+          {[
+            'Planes actualizados cada ciclo',
+            'Material descargable de por vida',
+            'Pagos en cuotas sin interés',
+            'Bolsa de trabajo activa',
+          ].map((item) => (
+            <li class="flex items-center gap-3 text-[0.92rem] text-ink">
+              <span class="w-5 h-5 rounded-full bg-brand-tint border border-brand/20 flex items-center justify-center shrink-0">
+                <Icon name="lucide:check" class="w-3 h-3 text-brand-deep" />
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="relative reveal reveal-delay-2">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="aspect-[4/5] rounded-3xl bg-gradient-to-br from-brand-ink via-brand-deep to-brand p-7 flex flex-col justify-between text-white relative overflow-hidden">
+              <div class="absolute inset-0 opacity-[0.06] bg-dot-grid bg-[length:14px_14px]"></div>
+              <div class="relative">
+                <p class="text-eyebrow uppercase text-white/60">Desde</p>
+                <p class="font-display text-[3.5rem] leading-none mt-2">2006</p>
+              </div>
+              <div class="relative">
+                <p class="font-display text-xl leading-tight tracking-tight">
+                  18 años formando<br/>
+                  <span class="display-italic text-warm-light">en oficios</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="aspect-square rounded-3xl bg-warm-tint border border-warm/15 p-6 flex flex-col justify-between">
+              <Icon name="lucide:award" class="w-7 h-7 text-warm-deep" />
+              <div>
+                <p class="font-display text-3xl text-warm-deep leading-none tracking-tight">50<span class="text-warm">+</span></p>
+                <p class="text-sm text-ink-muted mt-1.5">cursos activos por ciclo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4 pt-12">
+            <div class="aspect-square rounded-3xl bg-surface-raised border border-hairline p-6 flex flex-col justify-between">
+              <div class="flex -space-x-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div class={`w-9 h-9 rounded-full border-2 border-surface-raised flex items-center justify-center text-white text-xs font-medium ${
+                    i === 1 ? 'bg-gradient-to-br from-brand to-brand-deep' :
+                    i === 2 ? 'bg-gradient-to-br from-warm to-warm-deep' :
+                    i === 3 ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' :
+                    i === 4 ? 'bg-gradient-to-br from-amber-500 to-amber-700' :
+                    'bg-gradient-to-br from-rose-500 to-rose-700'
+                  }`}>{['M','D','L','C','A'][i-1]}</div>
+                ))}
+              </div>
+              <div>
+                <p class="font-display text-3xl text-ink leading-none tracking-tight">+500</p>
+                <p class="text-sm text-ink-muted mt-1.5">alumnos cada mes</p>
+              </div>
+            </div>
+
+            <div class="aspect-[4/5] rounded-3xl bg-surface-raised border border-hairline p-7 flex flex-col justify-between relative overflow-hidden group">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(217,119,87,0.15),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div class="relative">
+                <p class="text-eyebrow uppercase text-ink-subtle">Valoración</p>
+                <div class="flex items-baseline gap-2 mt-2">
+                  <p class="font-display text-[3.5rem] leading-none text-ink">4.8</p>
+                  <Icon name="lucide:star" class="w-5 h-5 text-warm fill-warm" />
+                </div>
+                <div class="flex gap-0.5 mt-2">
+                  {[1,2,3,4,5].map(() => <Icon name="lucide:star" class="w-3 h-3 text-warm fill-warm" />)}
+                </div>
+              </div>
+              <div class="relative">
+                <p class="text-sm text-ink-muted leading-tight">
+                  Promedio en Google Maps<br/>
+                  sobre <strong class="text-ink font-medium">247 reseñas</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,132 @@
+---
+import { siteConfig, getWhatsAppLinkWithContext } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+
+const channels = [
+  {
+    label: 'WhatsApp',
+    detail: siteConfig.phone,
+    icon: 'lucide:message-circle',
+    href: `https://wa.me/${siteConfig.whatsapp.number.replace(/[^0-9]/g, '')}`,
+    accent: 'whatsapp',
+    badge: 'Más rápido',
+  },
+  {
+    label: 'Email',
+    detail: siteConfig.email.general,
+    icon: 'lucide:mail',
+    href: `mailto:${siteConfig.email.general}`,
+    accent: 'ink',
+  },
+  {
+    label: 'Sede física',
+    detail: siteConfig.address.full,
+    icon: 'lucide:map-pin',
+    accent: 'brand',
+  },
+  {
+    label: 'Horarios',
+    detail: `${siteConfig.hours.weekdays} · ${siteConfig.hours.time} hs`,
+    icon: 'lucide:clock',
+    accent: 'warm',
+  },
+];
+---
+
+<section id="contacto" class="section-padding bg-surface relative overflow-hidden">
+  <div class="absolute inset-0 surface-grain pointer-events-none"></div>
+
+  <div class="container-custom relative">
+    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+      <div class="reveal">
+        <div class="section-eyebrow">
+          <span class="eyebrow-number">06 / Contacto</span>
+          <span class="section-eyebrow-line"></span>
+        </div>
+        <h2 class="display-2 text-balance">
+          Estamos a un mensaje
+          <span class="display-italic text-gradient-warm">de distancia.</span>
+        </h2>
+        <p class="lead mt-6 text-pretty max-w-lg">
+          Elegí el canal que prefieras. Te respondemos en el día, de lunes a sábado.
+        </p>
+
+        <div class="mt-10 bg-surface-raised border border-hairline rounded-3xl divide-y divide-hairline overflow-hidden">
+          {channels.map((channel) => {
+            const accentColor =
+              channel.accent === 'whatsapp' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
+              channel.accent === 'brand' ? 'bg-brand-tint text-brand-deep border-brand/15' :
+              channel.accent === 'warm' ? 'bg-warm-tint text-warm-deep border-warm/15' :
+              'bg-surface-sunken text-ink border-hairline';
+
+            const Wrapper = channel.href ? 'a' : 'div';
+            const wrapperProps = channel.href
+              ? { href: channel.href, target: '_blank', rel: 'noopener noreferrer' }
+              : {};
+
+            return (
+              <Wrapper {...wrapperProps} class={`flex items-center gap-5 p-5 lg:p-6 transition-colors duration-300 ${channel.href ? 'hover:bg-surface-sunken/50 group/ch' : ''}`}>
+                <div class={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 transition-transform duration-500 ${channel.href ? 'group-hover/ch:scale-105' : ''} ${accentColor}`}>
+                  <Icon name={channel.icon} class="w-5 h-5" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-ink-subtle font-medium">
+                    {channel.label}
+                    {channel.badge && (
+                      <span class="badge-live !text-[0.6rem] !px-2 !py-0.5">{channel.badge}</span>
+                    )}
+                  </div>
+                  <p class="font-medium text-ink mt-1 truncate">{channel.detail}</p>
+                </div>
+                {channel.href && (
+                  <Icon name="lucide:arrow-up-right" class="w-4 h-4 text-ink-subtle transition-transform duration-300 group-hover/ch:translate-x-0.5 group-hover/ch:-translate-y-0.5" />
+                )}
+              </Wrapper>
+            );
+          })}
+        </div>
+
+        <a
+          href={getWhatsAppLinkWithContext('Hola! Vi su web y me interesa obtener información sobre los cursos.')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-lg w-full bg-ink text-surface hover:bg-ink-strong hover:-translate-y-px shadow-soft hover:shadow-raised mt-6 group"
+        >
+          <Icon name="lucide:message-circle" class="w-4 h-4" />
+          Iniciar conversación
+          <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </div>
+
+      <div class="relative reveal reveal-delay-1">
+        <div class="relative bg-surface-raised border border-hairline rounded-3xl p-2 lg:p-2.5 shadow-soft overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.8765877394453!2d-68.8479873!3d-32.8894537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e2c8e5e7e0e1d%3A0x1234567890abcdef!2sMontecaseros%201169%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1234567890"
+            class="w-full h-[480px] lg:h-[640px] rounded-[1.25rem] grayscale-[0.3] contrast-[1.05]"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Instituto Celsius en Mendoza"
+          ></iframe>
+        </div>
+
+        <div class="absolute top-7 left-7 bg-surface-raised border border-hairline rounded-2xl p-4 pr-5 shadow-raised max-w-[260px] backdrop-blur-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-ink text-surface flex items-center justify-center shrink-0">
+              <Icon name="lucide:building-2" class="w-5 h-5" />
+            </div>
+            <div class="flex-1">
+              <p class="text-xs uppercase tracking-[0.14em] text-ink-subtle font-medium">Sede Mendoza</p>
+              <p class="text-sm font-medium text-ink mt-0.5">{siteConfig.address.street}</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-hairline-subtle flex items-center gap-2 text-xs">
+            <span class="badge-live">Abierto ahora</span>
+            <span class="text-ink-subtle">Cierra a las 19:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

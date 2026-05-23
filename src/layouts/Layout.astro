@@ -1,23 +1,189 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { siteConfig } from '../data/siteConfig';
+import '../styles/globals.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = siteConfig.name,
+  description = siteConfig.description,
+  ogImage = '/og-image.png',
+  noIndex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': siteConfig.url,
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: siteConfig.phone,
+  email: siteConfig.email.general,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.province,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: 'AR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.coordinates.lat,
+    longitude: siteConfig.coordinates.lng,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: siteConfig.rating.average,
+    reviewCount: siteConfig.rating.count,
+  },
+  image: ogImage,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué tipos de cursos ofrecen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ofrecemos cursos de oficio y cursos de gestión, disponibles en modalidad presencial y 100% online.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Tienen certificados válidos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, todos nuestros cursos otorgan certificados válidos a nivel nacional.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Puedo cursar 100% online?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, tenemos cursos disponibles 100% online para que puedas estudiar desde cualquier lugar.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo me contacto para más información?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Puedes escribirnos por WhatsApp al ${siteConfig.phone} o por email a ${siteConfig.email.general}.`,
+      },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="es_AR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,30..100&display=swap"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </head>
+  <body class="bg-surface text-ink antialiased">
+    <slot />
+
+    <!-- Scroll Reveal: progressive enhancement, respects reduced motion -->
+    <script is:inline>
+      (() => {
+        if (typeof window === 'undefined') return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      })();
+    </script>
+
+    <!-- Analytics Placeholders - Replace with actual codes -->
+    <!-- Google Analytics 4 -->
+    <script is:inline>
+      // window.dataLayer = window.dataLayer || [];
+      // function gtag(){dataLayer.push(arguments);}
+      // gtag('js', new Date());
+      // gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Meta Pixel -->
+    <script is:inline>
+      // !function(f,b,e,v,n,t,s)
+      // {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      // n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      // if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      // n.queue=[];t=b.createElement(e);t.async=!0;
+      // t.src=v;s=b.getElementsByTagName(e)[0];
+      // s.parentNode.insertBefore(t,s)}(window, document,'script',
+      // 'https://connect.facebook.net/en_US/fbevents.js');
+      // fbq('init', 'META_PIXEL_ID');
+      // fbq('track', 'PageView');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+  </body>
+</html>

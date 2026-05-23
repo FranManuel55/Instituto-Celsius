@@ -1,0 +1,118 @@
+---
+import { navigation, getWhatsAppLink } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out-expo"
+>
+  <div class="absolute inset-0 bg-surface/75 backdrop-blur-xl border-b border-hairline opacity-0 transition-opacity duration-500" id="header-bg"></div>
+
+  <nav class="container-custom relative flex items-center justify-between h-16 md:h-[72px]">
+    <a href="#inicio" class="flex items-center gap-2.5 group" aria-label="Instituto Celsius - Inicio">
+      <div class="relative w-9 h-9 rounded-xl bg-ink flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+        <span class="font-display text-surface text-[1.05rem] font-medium tracking-tighter">C</span>
+        <div class="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-warm/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      </div>
+      <div class="hidden sm:flex flex-col leading-none">
+        <span class="font-display text-[1.05rem] text-ink tracking-tight">Instituto Celsius</span>
+        <span class="text-[0.65rem] tracking-[0.18em] uppercase text-ink-subtle mt-0.5">Mendoza · est. 2006</span>
+      </div>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+      {navigation.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-[0.92rem] text-ink-muted hover:text-ink font-medium px-3.5 py-2 rounded-full transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={getWhatsAppLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex btn btn-sm bg-ink text-surface hover:bg-ink-strong shadow-soft hover:shadow-raised hover:-translate-y-px"
+        aria-label="Contactar por WhatsApp"
+      >
+        <Icon name="lucide:message-circle" class="w-4 h-4" />
+        <span>Contactanos</span>
+        <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 opacity-70" />
+      </a>
+
+      <button
+        type="button"
+        class="lg:hidden p-2 -mr-2 text-ink hover:text-brand transition-colors"
+        aria-label="Abrir menú"
+        id="menu-toggle"
+      >
+        <Icon name="lucide:menu" class="w-6 h-6" id="menu-icon-open" />
+        <Icon name="lucide:x" class="w-6 h-6 hidden" id="menu-icon-close" />
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-surface/95 backdrop-blur-xl border-t border-hairline overflow-hidden"
+  >
+    <ul class="container-custom py-4 space-y-1">
+      {navigation.map((item, i) => (
+        <li>
+          <a
+            href={item.href}
+            class="flex items-center justify-between text-ink-muted hover:text-ink font-medium py-3 border-b border-hairline-subtle last:border-0 transition-colors"
+          >
+            <span class="flex items-center gap-3">
+              <span class="font-mono text-[0.7rem] text-ink-faint">0{i + 1}</span>
+              {item.label}
+            </span>
+            <Icon name="lucide:arrow-up-right" class="w-4 h-4 opacity-50" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const headerBg = document.getElementById('header-bg');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  const updateHeader = () => {
+    if (window.scrollY > 12) {
+      headerBg?.classList.add('opacity-100');
+      headerBg?.classList.remove('opacity-0');
+    } else {
+      headerBg?.classList.add('opacity-0');
+      headerBg?.classList.remove('opacity-100');
+    }
+  };
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+</script>

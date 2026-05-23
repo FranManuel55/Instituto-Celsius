@@ -1,0 +1,139 @@
+---
+import { getWhatsAppLinkWithContext } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+
+const services = [
+  {
+    category: 'Cursos de Oficio',
+    icon: 'lucide:wrench',
+    description: 'Habilidades técnicas con alta demanda en el mercado de servicios y construcción.',
+    items: [
+      'Electricidad general',
+      'Plomería básica',
+      'Carpintería',
+      'Refrigeración y aire acondicionado',
+      'Soldadura',
+      'Albañilería',
+    ],
+    duration: '2 a 6 meses',
+    accent: 'warm',
+  },
+  {
+    category: 'Cursos de Gestión',
+    icon: 'lucide:briefcase',
+    description: 'Programas administrativos y digitales para impulsar tu carrera o tu propio negocio.',
+    items: [
+      'Administración de empresas',
+      'Marketing digital',
+      'Gestión de proyectos',
+      'RRHH y liquidación de sueldos',
+      'Contabilidad básica',
+      'Atención al cliente',
+    ],
+    duration: '1 a 4 meses',
+    accent: 'brand',
+  },
+];
+---
+
+<section id="cursos" class="section-padding bg-surface-raised border-t border-hairline">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <div class="section-eyebrow justify-center">
+        <span class="section-eyebrow-line"></span>
+        <span class="eyebrow-number">03 / Programas</span>
+        <span class="section-eyebrow-line"></span>
+      </div>
+      <h2 class="display-2 text-balance">
+        Dos caminos. Un mismo
+        <span class="display-italic text-gradient-warm">objetivo:</span>
+        que tengas trabajo.
+      </h2>
+      <p class="lead mt-6 max-w-2xl mx-auto text-pretty">
+        Elegí el área donde querés crecer. Cada programa combina teoría aplicada, casos reales y certificación final.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      {services.map((service, idx) => (
+        <article class={`group relative bg-surface border border-hairline rounded-4xl p-8 lg:p-10 transition-all duration-500 ease-out-expo hover:border-hairline-strong hover:-translate-y-1 hover:shadow-raised reveal reveal-delay-${idx + 1}`}>
+          <div class="absolute top-8 right-8 font-mono text-[0.7rem] tracking-widest text-ink-faint">
+            0{idx + 1}
+          </div>
+
+          <div class={`w-14 h-14 rounded-2xl flex items-center justify-center mb-7 transition-transform duration-500 group-hover:-rotate-3 ${
+            service.accent === 'warm'
+              ? 'bg-warm-tint border border-warm/20'
+              : 'bg-brand-tint border border-brand/20'
+          }`}>
+            <Icon name={service.icon} class={`w-6 h-6 ${service.accent === 'warm' ? 'text-warm-deep' : 'text-brand-deep'}`} />
+          </div>
+
+          <h3 class="font-display text-[1.85rem] lg:text-[2.1rem] leading-tight text-ink mb-3 tracking-tight">
+            {service.category}
+          </h3>
+          <p class="text-ink-muted leading-relaxed mb-7 max-w-md">
+            {service.description}
+          </p>
+
+          <ul class="space-y-2.5 mb-8">
+            {service.items.map((item) => (
+              <li class="group/item flex items-center gap-3 py-1.5 text-[0.95rem] text-ink border-b border-hairline-subtle last:border-0">
+                <Icon name="lucide:check" class={`w-4 h-4 shrink-0 ${service.accent === 'warm' ? 'text-warm' : 'text-brand'}`} />
+                <span class="flex-1">{item}</span>
+                <Icon name="lucide:plus" class="w-3 h-3 text-ink-faint opacity-0 group-hover/item:opacity-100 transition-opacity" />
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex items-center justify-between pt-6 border-t border-hairline">
+            <div class="flex items-center gap-2 text-sm text-ink-muted">
+              <Icon name="lucide:clock" class="w-4 h-4" />
+              <span>Duración: <strong class="text-ink font-medium">{service.duration}</strong></span>
+            </div>
+
+            <a
+              href={getWhatsAppLinkWithContext(`Hola! Me interesa obtener información sobre los ${service.category.toLowerCase()}.`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 font-medium text-ink hover:text-brand transition-colors text-sm group/cta"
+            >
+              Consultar
+              <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 lg:mt-16 relative overflow-hidden rounded-4xl bg-ink text-surface p-10 lg:p-14 reveal">
+      <div class="absolute inset-0 opacity-[0.05] bg-dot-grid bg-[length:18px_18px]"></div>
+      <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-gradient-to-br from-warm/30 to-transparent blur-3xl"></div>
+
+      <div class="relative grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+        <div>
+          <span class="eyebrow text-warm-light/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-warm"></span>
+            Plan a medida
+          </span>
+          <h3 class="font-display text-[1.9rem] lg:text-[2.4rem] leading-tight tracking-tight mt-4 text-balance">
+            ¿Buscás algo
+            <span class="display-italic text-warm-light"> distinto</span>?
+            Diseñamos programas para vos o tu empresa.
+          </h3>
+        </div>
+        <div class="md:text-right">
+          <a
+            href={getWhatsAppLinkWithContext('Hola! Quiero consultar por cursos personalizados o para empresas.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-lg bg-surface text-ink hover:bg-surface-sunken hover:-translate-y-px group"
+          >
+            Hablemos de tu proyecto
+            <Icon name="lucide:arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

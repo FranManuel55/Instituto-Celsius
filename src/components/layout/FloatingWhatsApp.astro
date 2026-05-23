@@ -1,0 +1,30 @@
+---
+import { getWhatsAppLink } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+
+const whatsappLink = getWhatsAppLink();
+---
+
+<a
+  href={whatsappLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="floating-wa group fixed bottom-6 right-6 z-40 flex items-center gap-3 h-14 pr-5 pl-3 bg-ink text-surface rounded-full shadow-float hover:bg-ink-strong hover:-translate-y-0.5 transition-all duration-500 ease-out-expo"
+  aria-label="Contactar por WhatsApp"
+>
+  <span class="relative w-9 h-9 rounded-full bg-whatsapp flex items-center justify-center animate-pulse-ring">
+    <Icon name="lucide:message-circle" class="w-4.5 h-4.5 text-white" />
+  </span>
+  <span class="hidden sm:inline text-sm font-medium tracking-[-0.005em]">
+    Conversemos
+  </span>
+  <Icon name="lucide:arrow-up-right" class="hidden sm:inline w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+</a>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .floating-wa span {
+      animation: none !important;
+    }
+  }
+</style>

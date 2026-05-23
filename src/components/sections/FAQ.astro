@@ -1,0 +1,126 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const faqs = [
+  {
+    question: '¿Qué tipos de cursos ofrecen?',
+    answer: 'Ofrecemos dos categorías principales: cursos de oficio (electricidad, plomería, soldadura, refrigeración, carpintería, albañilería) y cursos de gestión (administración, marketing digital, RRHH, contabilidad). Todos disponibles en modalidad presencial y 100% online.',
+  },
+  {
+    question: '¿Los certificados tienen validez nacional?',
+    answer: 'Sí, todos nuestros certificados y diplomas tienen validez a nivel nacional. Somos una institución registrada y nuestros cursos cumplen con los estándares de formación profesional exigidos por la normativa vigente.',
+  },
+  {
+    question: '¿Puedo hacer un curso 100% online?',
+    answer: 'Sí, tenemos disponible la modalidad 100% online para todos nuestros cursos. Podés estudiar a tu ritmo desde cualquier lugar, con acceso a material digital, videos explicativos y soporte de tutores por WhatsApp.',
+  },
+  {
+    question: '¿Cómo me inscribo a un curso?',
+    answer: 'Podés escribirnos directamente por WhatsApp al número que aparece en nuestra web. Te guiaremos en el proceso de inscripción, te informaremos sobre requisitos, costos y modalidades de pago, y resolvemos cualquier duda que tengas.',
+  },
+  {
+    question: '¿Ofrecen planes para empresas o grupos?',
+    answer: 'Sí, trabajamos con empresas y organizaciones que necesitan capacitar a sus equipos. Ofrecemos planes personalizados según las necesidades de cada organización, con condiciones especiales para grupos. Contactanos para más información.',
+  },
+  {
+    question: '¿Qué duración tienen los cursos?',
+    answer: 'La duración varía según el curso seleccionado. Nuestros cursos de oficio van de 2 a 6 meses, mientras que los cursos de gestión pueden durar entre 1 y 4 meses. Consultanos por el curso específico que te interese.',
+  },
+  {
+    question: '¿Hay requisitos previos para anotarse?',
+    answer: 'Cada curso tiene sus propios requisitos, pero en general no necesitás conocimientos previos. Algunos cursos avanzados pueden requerir haber completado una formación base. Consultanos para verificar los requisitos específicos.',
+  },
+  {
+    question: '¿Cómo puedo contactar si tengo más dudas?',
+    answer: 'Estamos disponibles por WhatsApp al +54 261 679-5316, por email a info@celsiusinstituto.com.ar, o podés visitarnos en Montecaseros 1169, Mendoza. Nuestro horario de atención es de lunes a sábado de 9 a 19.',
+  },
+];
+---
+
+<section id="preguntas" class="section-padding bg-surface-raised border-t border-hairline">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
+      <div class="lg:sticky lg:top-32 self-start reveal">
+        <div class="section-eyebrow">
+          <span class="eyebrow-number">05 / FAQ</span>
+          <span class="section-eyebrow-line"></span>
+        </div>
+        <h2 class="display-2 text-balance">
+          ¿Tenés dudas?
+          <span class="display-italic text-gradient-warm">Las despejamos.</span>
+        </h2>
+        <p class="lead mt-6 max-w-md text-pretty">
+          Si tu pregunta no está acá, escribinos por WhatsApp y te respondemos en el día.
+        </p>
+
+        <a
+          href="https://wa.me/542616795316?text=Hola!%20Tengo%20una%20pregunta%20que%20no%20est%C3%A1%20en%20las%20FAQ."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-md bg-whatsapp text-white hover:bg-whatsapp-deep hover:-translate-y-px mt-8 group"
+        >
+          <Icon name="lucide:message-circle" class="w-4 h-4" />
+          Preguntar por WhatsApp
+          <Icon name="lucide:arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </div>
+
+      <div class="reveal reveal-delay-1" id="faq-accordion">
+        {faqs.map((faq, index) => (
+          <div class="border-b border-hairline first:border-t group/item">
+            <button
+              type="button"
+              class="faq-trigger w-full py-6 flex items-start justify-between text-left gap-6 cursor-pointer hover:opacity-80 transition-opacity"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${index}`}
+            >
+              <span class="flex items-start gap-5 flex-1">
+                <span class="font-mono text-[0.7rem] text-ink-subtle pt-1.5 shrink-0 w-6">
+                  0{index + 1}
+                </span>
+                <span class="font-display text-[1.15rem] lg:text-[1.25rem] text-ink leading-snug tracking-tight">
+                  {faq.question}
+                </span>
+              </span>
+              <span class="faq-icon shrink-0 w-9 h-9 rounded-full border border-hairline-strong flex items-center justify-center text-ink transition-all duration-500 group-hover/item:bg-ink group-hover/item:text-surface group-hover/item:border-ink">
+                <Icon name="lucide:plus" class="faq-plus w-4 h-4 transition-transform duration-500" />
+              </span>
+            </button>
+            <div
+              id={`faq-answer-${index}`}
+              class="faq-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out-expo"
+            >
+              <div class="overflow-hidden">
+                <p class="pb-6 pl-11 pr-12 text-ink-muted leading-relaxed text-pretty">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const content = trigger.nextElementSibling as HTMLElement;
+      const icon = trigger.querySelector('.faq-plus') as HTMLElement;
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        content.classList.remove('grid-rows-[1fr]');
+        content.classList.add('grid-rows-[0fr]');
+        icon?.classList.remove('rotate-45');
+      } else {
+        content.classList.remove('grid-rows-[0fr]');
+        content.classList.add('grid-rows-[1fr]');
+        icon?.classList.add('rotate-45');
+      }
+
+      trigger.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+    });
+  });
+</script>

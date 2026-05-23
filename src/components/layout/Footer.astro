@@ -1,0 +1,107 @@
+---
+import { siteConfig, navigation } from '../../data/siteConfig';
+import { Icon } from 'astro-icon/components';
+---
+
+<footer class="bg-surface-dark text-surface relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.025] bg-dot-grid bg-[length:18px_18px]"></div>
+
+  <div class="container-custom relative pt-20 md:pt-24 pb-10">
+    <div class="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 lg:gap-16 mb-16 lg:mb-20">
+      <div>
+        <a href="#inicio" class="inline-flex items-center gap-2.5 mb-6 group">
+          <div class="w-10 h-10 rounded-xl bg-surface text-ink flex items-center justify-center">
+            <span class="font-display text-[1.1rem]">C</span>
+          </div>
+          <div class="flex flex-col leading-none">
+            <span class="font-display text-[1.15rem]">{siteConfig.name}</span>
+            <span class="text-[0.65rem] tracking-[0.18em] uppercase text-surface/40 mt-0.5">Mendoza · est. 2006</span>
+          </div>
+        </a>
+        <p class="font-display text-[1.5rem] lg:text-[1.75rem] leading-[1.15] text-balance text-surface/90 tracking-tight max-w-md">
+          Formando profesionales
+          <span class="display-italic text-warm-light">en oficios</span>
+          desde hace {siteConfig.badges.years} años.
+        </p>
+        <p class="text-surface/50 text-sm mt-4 max-w-md leading-relaxed">
+          Más de {siteConfig.badges.graduates.toLocaleString('es-AR')} egresados nos respaldan en todo el país.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-eyebrow uppercase text-surface/40 mb-5">Navegación</h4>
+        <ul class="space-y-3">
+          {navigation.map((item) => (
+            <li>
+              <a href={item.href} class="text-surface/70 hover:text-surface link-underline text-sm transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-eyebrow uppercase text-surface/40 mb-5">Contacto</h4>
+        <ul class="space-y-3.5 text-sm text-surface/70">
+          <li class="flex items-start gap-2.5">
+            <Icon name="lucide:map-pin" class="w-4 h-4 mt-0.5 shrink-0 text-surface/40" />
+            <span class="leading-snug">{siteConfig.address.full}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:phone" class="w-4 h-4 shrink-0 text-surface/40" />
+            <a href={`tel:${siteConfig.phone}`} class="hover:text-surface transition-colors">{siteConfig.phone}</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:mail" class="w-4 h-4 shrink-0 text-surface/40" />
+            <a href={`mailto:${siteConfig.email.general}`} class="hover:text-surface transition-colors break-all">{siteConfig.email.general}</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:clock" class="w-4 h-4 shrink-0 text-surface/40" />
+            <span>{siteConfig.hours.weekdays} · {siteConfig.hours.time} hs</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-eyebrow uppercase text-surface/40 mb-5">Seguinos</h4>
+        <div class="flex gap-2 mb-6">
+          {[
+            { href: siteConfig.social.instagram, icon: 'lucide:instagram', label: 'Instagram' },
+            { href: siteConfig.social.facebook, icon: 'lucide:facebook', label: 'Facebook' },
+            { href: siteConfig.social.whatsapp, icon: 'lucide:message-circle', label: 'WhatsApp' },
+          ].map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-surface/70 hover:bg-white hover:text-ink hover:border-white transition-all duration-300"
+              aria-label={s.label}
+            >
+              <Icon name={s.icon} class="w-4 h-4" />
+            </a>
+          ))}
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+          <div class="flex items-center gap-1 mb-1.5">
+            {[1,2,3,4,5].map(() => <Icon name="lucide:star" class="w-3 h-3 text-warm fill-warm" />)}
+          </div>
+          <p class="text-sm text-surface/80">
+            <strong class="font-display text-base text-surface">4.8/5</strong>
+            <span class="text-surface/50"> en Google</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm">
+      <p class="text-surface/40">
+        © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
+      </p>
+      <p class="text-surface/40 flex items-center gap-2 font-mono text-xs tracking-wider uppercase">
+        <span class="w-1 h-1 rounded-full bg-emerald-400"></span>
+        Sistema activo · Mendoza, Argentina
+      </p>
+    </div>
+  </div>
+</footer>
